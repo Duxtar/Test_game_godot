@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj235wid6j2ed"]
+
+[ext_resource type="Texture2D" uid="uid://qv5h4ywgx5qs" path="res://monochrome-transparent_packed.png" id="1_8kkc8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8kkc8"]
+friction = 10.0
+bounce = 0.16
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl1kb"]
+radius = 13.0384
+
+[node name="grenade" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 129
+physics_material_override = SubResource("PhysicsMaterial_8kkc8")
+gravity_scale = 0.0
+linear_damp_mode = 1
+linear_damp = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_8kkc8")
+region_enabled = true
+region_rect = Rect2(723, 146, 12, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tl1kb")

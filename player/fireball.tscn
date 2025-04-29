@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjskfmj70hc0x"]
+
+[ext_resource type="Script" uid="uid://biy7g1r6n3vwm" path="res://player/fireball.gd" id="1_841cc"]
+[ext_resource type="Texture2D" uid="uid://qv5h4ywgx5qs" path="res://monochrome-transparent_packed.png" id="1_pev22"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_841cc"]
+radius = 6.5192
+
+[node name="fireball" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_841cc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.227451, 0, 1)
+rotation = 2.35619
+texture = ExtResource("1_pev22")
+region_enabled = true
+region_rect = Rect2(464, 176, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_841cc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2adm7te6xjes"]
+
+[ext_resource type="Texture2D" uid="uid://qv5h4ywgx5qs" path="res://monochrome-transparent_packed.png" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ctmkbrjsjwp8f" path="res://player/player.gd" id="1_rkbax"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
+radius = 30.0
+height = 68.0
+
+[node name="player" type="CharacterBody2D"]
+texture_filter = 1
+collision_mask = 3
+script = ExtResource("1_rkbax")
+
+[node name="player_sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.623529, 0.623529, 1)
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_g2els")
+region_enabled = true
+region_rect = Rect2(466, 97, 12, 14)
+
+[node name="shadow" type="Sprite2D" parent="player_sprite"]
+self_modulate = Color(0, 0, 0, 0.32549)
+z_index = -1
+texture_filter = 2
+position = Vector2(2.43783e-07, 5.6)
+rotation = 0.785398
+scale = Vector2(0.663931, 0.630142)
+texture = ExtResource("1_g2els")
+region_enabled = true
+region_rect = Rect2(128, 80, 16, 16)
+
+[node name="weapon" type="Sprite2D" parent="player_sprite"]
+modulate = Color(0.858824, 0.854902, 0, 1)
+texture_filter = 1
+position = Vector2(7.2, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_g2els")
+region_enabled = true
+region_rect = Rect2(545, 65, 14, 14)
+
+[node name="positions" type="Node2D" parent="player_sprite/weapon"]
+position = Vector2(-14.4, -4)
+scale = Vector2(0.4, 0.4)
+
+[node name="Marker2D" type="Marker2D" parent="player_sprite/weapon/positions"]
+position = Vector2(47.145, -1.22)
+
+[node name="Marker2D2" type="Marker2D" parent="player_sprite/weapon/positions"]
+position = Vector2(44.265, -3.99)
+
+[node name="Marker2D3" type="Marker2D" parent="player_sprite/weapon/positions"]
+position = Vector2(50.64, 3.14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rkbax")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Shoot_time" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="Grenade_time" type="Timer" parent="."]
+
+[connection signal="timeout" from="Shoot_time" to="." method="_on_shoot_time_timeout"]
+[connection signal="timeout" from="Grenade_time" to="." method="_on_grenade_time_timeout"]

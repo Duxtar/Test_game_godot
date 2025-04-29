@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ben858ju7wqko"]
+
+[ext_resource type="Texture2D" uid="uid://qv5h4ywgx5qs" path="res://monochrome-transparent_packed.png" id="1_nf3pd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nf3pd"]
+radius = 2.4
+height = 15.2
+
+[node name="table" type="StaticBody2D"]
+modulate = Color(1, 0.662745, 0, 1)
+z_index = -1
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nf3pd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nf3pd")
+region_enabled = true
+region_rect = Rect2(224, 144, 16, 16)

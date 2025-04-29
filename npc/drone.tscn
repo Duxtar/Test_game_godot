@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://3vvby7kvn57o"]
+
+[ext_resource type="Script" uid="uid://cb5mtrb83rnme" path="res://npc/drone.gd" id="1_5v1h0"]
+[ext_resource type="Texture2D" uid="uid://qv5h4ywgx5qs" path="res://monochrome-transparent_packed.png" id="1_gxt20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v1h0"]
+atlas = ExtResource("1_gxt20")
+region = Rect2(288, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv5wg"]
+atlas = ExtResource("1_gxt20")
+region = Rect2(304, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfr7c"]
+atlas = ExtResource("1_gxt20")
+region = Rect2(320, 144, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2ngc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v1h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv5wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfr7c")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5v1h0"]
+radius = 3.80526
+
+[node name="ass" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_5v1h0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0.392157, 1, 1)
+sprite_frames = SubResource("SpriteFrames_r2ngc")
+animation = &"running"
+frame_progress = 0.577938
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.8)
+shape = SubResource("CircleShape2D_5v1h0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
