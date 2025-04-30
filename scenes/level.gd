@@ -5,10 +5,10 @@ var fireball_scene: PackedScene = preload("res://player/fireball.tscn")
 var grenade_scene: PackedScene = preload("res://player/grenade.tscn")
 
 func _on_bed_player_enter(body):
-	$Bed.modulate = Color(0, 0, 0.0) # Replace with function body.
+	$decore/Bed.modulate = Color(0, 0, 0.0) # Replace with function body.
 
 func _on_bed_player_exit(body):
-	$Bed.modulate = Color(1.0, 0.584, 0.0) # Replace with function body.
+	$decore/Bed.modulate = Color(1.0, 0.584, 0.0) # Replace with function body.
 
 
 func _on_player_fireball(pos, view_direction) -> void:
