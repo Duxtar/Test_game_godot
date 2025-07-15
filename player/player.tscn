@@ -58,6 +58,7 @@ shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 9.53674e-07)
+scale = Vector2(1, 1)
 position_smoothing_speed = 50.0
 
 [node name="Shoot_time" type="Timer" parent="."]
